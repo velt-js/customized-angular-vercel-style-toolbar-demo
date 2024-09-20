@@ -19,7 +19,7 @@ export class AppComponent {
 
 	isDarkMode: boolean = true;
 	client: any;
-	
+
 	customList: CustomAnnotationDropdownItem[] = [
 		{ id: '#bugs', label: '#bugs' },
 		{ id: '#ideas', label: '#ideas' },
@@ -28,7 +28,7 @@ export class AppComponent {
 
 	customListDataOnCommentAnnotation: CustomAnnotationDropdownData = {
 		type: 'single', // or 'multi' for multi selection
-		placeholder: 'Select a Category',
+		placeholder: 'Select Channel',
 		data: this.customList,
 	};
 
@@ -64,8 +64,9 @@ export class AppComponent {
 		commentElement?.onCommentSelectionChange().subscribe(e => {
 			setTimeout(() => {
 				(document.querySelectorAll(".velt-comment-dialog--selected app-comment-dialog-thread-card .velt-thread-card--time")).forEach(e => {
-					console.log(e.innerHTML.split(' '))
-					e.innerHTML = e.innerHTML.split(' ')[1] + e.innerHTML.split(' ')[2][0]
+					if (e) {
+						e.innerHTML = e.innerHTML.split(' ')[1] + e.innerHTML.split(' ')[2][0]
+					}
 				})
 
 			}, 300)
