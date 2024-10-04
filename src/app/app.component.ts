@@ -59,18 +59,6 @@ export class AppComponent {
 
 		const commentElement = this.veltService.clientSignal()?.getCommentElement();
 		commentElement?.createCustomListDataOnAnnotation(this.customListDataOnCommentAnnotation)
-
-
-		commentElement?.onCommentSelectionChange().subscribe(e => {
-			setTimeout(() => {
-				(document.querySelectorAll(".velt-comment-dialog--selected app-comment-dialog-thread-card .velt-thread-card--time")).forEach(e => {
-					if (e) {
-						e.innerHTML = e.innerHTML.split(' ')[1] + e.innerHTML.split(' ')[2][0]
-					}
-				})
-
-			}, 300)
-		})
 	}
 
 	// Change theme when user clicks on theme button
